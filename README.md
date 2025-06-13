@@ -1,1 +1,91 @@
-# Rayito-de-sol
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rayito de sol</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #fff8dc;
+    }
+
+    .container {
+      background: white;
+      display: inline-block;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #ff9900;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .btn-si {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-no {
+      background-color: #dc3545;
+      color: white;
+      position: absolute;
+    }
+
+    .respuesta {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" style="height: 200px;">
+  <h1>¿Soy tu rayito de sol? ☀️</h1>
+  <button class="btn-si" onclick="mostrarRespuesta('¡Yupiii... sabía que dirías que sí!! 😍')">Sí</button>
+  <button class="btn-no" id="noBtn" onclick="moverBoton()">No</button>
+  <div class="respuesta" id="respuesta"></div>
+</div>
+
+<script>
+  function mostrarRespuesta(texto) {
+    document.getElementById('respuesta').textContent = texto;
+  }
+
+  const noBtn = document.getElementById('noBtn');
+
+  function moverBoton() {
+    const container = document.querySelector('.container');
+    const maxX = container.offsetWidth - noBtn.offsetWidth;
+    const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
+
+    noBtn.style.left = `${newX}px`;
+    noBtn.style.top = `${newY}px`;
+  }
+
+  // Evita que lo puedan tocar
+  noBtn.addEventListener('mouseenter', moverBoton);
+</script>
+
+</body>
+</html>
